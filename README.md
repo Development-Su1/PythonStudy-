@@ -17,3 +17,50 @@
 - 파이썬은 간결하며 생산성이 높다.
 > 파이썬은 가장 좋은 방법 1가지만 사용하는 것을 선호한다. 이 간결함의 철학은 파이썬 문법에도 그대로 적용되어 파이썬 프로그래밍을 하는 사람들은 잘 정리되어 있는 소스 코드를 볼 수 있다.       
   다른 사람이 작업한 소스 코드도 한눈에 들어와 이해하기 쉽기 때문에 공동 작업과 유지 보수가 아주 쉽고 편하다.
+
+3. 매크로
+1) 설치
+pip install pyautogui
+
+import pyautogui as pag
+
+2) 마우스 명령
+- 마우스 커서 위치 좌표 추출
+x, y = pag.position()
+print(x, y)
+
+pos = pag.position()
+print(pos) # Point(x=?, y=?)
+
+- 마우스 위치 이동 (좌측 상단 0,0 기준)
+pag.moveTo(0,0)
+
+- 현재 마우스 커서 위치 기준 이동
+pag.moveRel(1,0) # x방향으로 1픽셀만큼 움직임
+
+- 마우스 클릭
+pag.click((100,100))
+pag.click(x=100,y=100) # (100,100) 클릭
+
+pag.rightClick() # 우클릭
+pag.doubleClick() # 더블클릭
+
+- 마우스 드래그
+pag.dragTo(x=100, y=100, duration=2)  # 현재 커서 위치에서 좌표(100,100)까지 2초간 드래그하겠다
+
+duration 값이 없으면 드래그가 잘 안되는 경우도 있으므로 설정하기
+
+3) 키보드 명령
+- 글자 타이핑
+pag.typewrite("ABC", interval=1)  # interval은 천천히 글자를 입력할때 사용하기
+
+- 글자 아닌 다른 키보드 누르기
+pag.press('enter') # 엔터키
+press 키 네임 모음 : 링크
+
+- 보조키 누른 상태 유지 & 떼기
+pag.keyDown('shift')  # shift 누른 상태 유지
+pag.keyUp('shift')  # 누르고 있는 shift 떼기
+
+- 많이 쓰는 명령어 함수 사용
+pag.hotkey('ctrl', 'c') # ctrl+c
